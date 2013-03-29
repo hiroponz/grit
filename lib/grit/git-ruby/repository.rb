@@ -419,6 +419,8 @@ module Grit
           data_old = fileA.split(/\n/).map! { |e| e.chomp }
           data_new = fileB.split(/\n/).map! { |e| e.chomp }
 
+          # TODO: sometimes very slow
+          # ex. rroonga 2ba6188ff652d2f03bd4de81ea93f853ca83dbd4
           diffs = Difference::LCS.diff(data_old, data_new)
           next if diffs.empty?
 
